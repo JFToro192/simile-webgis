@@ -1,0 +1,211 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- main -->
+    <link rel="stylesheet" href="./css/main.min.css">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- title -->
+    <title>SIMILE-WebGIS</title>
+    <link rel = "icon" href ="./img/simile-logo-app.png" type = "image/x-icon">
+</head>
+<body>
+    <!-- TOP CONTAINER -->
+    <div class="top-container">
+        <ul class="nav">
+            <li class="nav-items btn-readme"><a href="#">ReadMe <i class="fab fa-readme"></i></a></li>
+            <li class="nav-items btn-webgis webgis nav-item-active"><a href="#">SIMILE WebGIS <i class="fa fa-fw fa-home"></a></li>
+            <li class="nav-items btn-github"><a href="https://github.com/JFToro192/simile-webgis">Github <i class="fab fa-github"></i></a></li>
+            <li class="nav-items btn-project"><a href="#">About SIMILE <img src="img\simile-logo-app.png" style="height: 20px;"></img></a></li>
+        </ul>
+    </div>
+    <!-- MIDDLE CONTAINER -->
+    <div class="middle-container">
+        <!-- OL map -->
+        <div id="map"></div>
+        <!-- About the project -->
+        <div class="about-project">
+            <div class="btn-project">
+                <button><i class="fas fa-window-close"></i></button>
+            </div>
+            <div class="about-info">
+                <h2>About SIMILE</h2>
+                <p>SIMILE (Integrated monitoring system for knowledge, protection and valorisation of the subalpine lakes and their ecosystems), is an INTERREG Italy-Switzerland project, started in 2019, that aims at preserving the water quality of the subalpine lakes Lugano, Como and Maggiore by integrating new monitoring techniques to the existing ones.<br> For more information, please visit the <a href="https://interreg-italiasvizzera.eu/progetti/simile/" style="text-decoration: none;color: white;font-weight: bold;">Interreg-SIMILE</a> website</p>
+                <a href="https://interreg-italiasvizzera.eu/progetti/simile/"><img src="./img/interreg-logo.png" alt="Progetto SIMILE Logo" style="height:50px"></a>
+            </div>
+        </div>
+        <!-- About the webgis -->
+        <div class="about-webgis">
+            <div class="btn-webgis">
+                <button><i class="fas fa-window-close"></i></button>
+            </div>
+            <div class="about-info">
+                <h2>SIMILE WebGIS</h2>
+                <p>The WebGIS provides a user-friendly environment for the visualisation of SIMILE’s satellite based lake water quality parameters maps. The application aims at simplifying the access and retrieval of time series of data to monitor the different water quality measurements by incorporating advanced functionalities such as the time widget and layer information display. Visit the GitHub repository of the WebGIS <a href="https://github.com/JFToro192/simile-webgis"  style="text-decoration: none;color: white;font-weight: bold;">Github <i class="fab fa-github"></i></a><p>
+                <a href="https://interreg-italiasvizzera.eu/progetti/simile/"><img src="./img/interreg-logo.png" alt="Progetto SIMILE Logo" style="height:50px"></a>
+            </div>
+        </div>
+        <!-- Search layers -->
+            <!-- Layers button -->
+            <div class="ol-layers ol-unselectable ol-control" style="pointer-events: auto;">
+                <button class="ol-layers-show" type="button" title="Show/Hide Layers"><i class="fas fa-layer-group"></i></button>
+            </div>
+
+            <!-- Table of contents -->
+            <div class="table-content-container ol-unselectable ol-control">
+                <div class="table-content-list">
+                    <ul id="layer1" class="layers-list"><h5>Static Layers</h5></ul>
+                    <ul id="layer2" class="layers-list"><h5>Time Series Layers</h5></ul>
+                </div>
+            </div>
+        
+        <!-- Time control -->
+            <!-- Time button -->
+            <div class="ol-time ol-unselectable ol-control" style="pointer-events: auto;">
+                <button class="ol-time-show" type="button" title="Time control"><i class="far fa-clock"></i></button>
+            </div>
+            <!--Time bar-->
+            <div class="time-manager ol-unselectable ol-control">
+                <div class="time-current"><b>Selected Layer: </b><span class="time-current-layer">None</span> - <b>Current time: </b><span class="time-current-timestamp">N/A</span></div>
+                <div class="timebar">
+                <div class="time-slider">
+                    <input class="time-slider__range" type="range" min="1" max="100" value="100">
+                </div>
+                <ul class="time-controls">
+                    <li class="time-controls__item"><a href="#!"><i class="fas fa-backward fa circle-icon"></i></a></li>
+                    <li class="time-controls__item"><a href="#!"><i class="fas fa-step-backward fa"></i></a></li>
+                    <li class="time-controls__item"><a href="#!"><i class="fas fa-pause fa"></i></a></li>
+                    <li class="time-controls__item"><a href="#!"><i class="fas fa-play fa"></i></a></li>
+                    <li class="time-controls__item"><a href="#!"><i class="fas fa-step-forward fa"></i></a></li>
+                    <li class="time-controls__item"><a href="#!"><i class="fas fa-forward fa"></i></a></li>
+                </ul>
+                </div>
+            </div>
+
+        <!-- Display chart -->
+            <!-- Basemap button -->
+            <!-- <div class="ol-plot ol-unselectable ol-control" onclick="showHidePlot()" style="pointer-events: auto;">
+                <button class="ol-plot-show" type="button" title="Basemap Switcher"><i class="fas fa-chart-line"></i></button>
+            </div> -->
+            <!-- Basemap container -->
+            <div class="plot-container ol-unselectable ol-control"></div>
+
+        <!-- Change basemap -->
+            <!-- Basemap button -->
+            <div class="ol-basemap ol-unselectable ol-control" style="pointer-events: auto;">
+                <button class="ol-basemap-show" type="button" title="Basemap Switcher"><i class="fas fa-globe-europe"></i></button>
+            </div>
+            <!-- Basemap options -->
+            <div class="basemap-container ol-unselectable ol-control">
+                <ul class="basemap-list">
+                    <li id ="layer00" class="basemap-list__item"><input type="radio" id="layer00" class="visible" name="basemap"><img src="./img/basemap/osm-standard.png" alt="osm-standard" title="osm-standard" ></li>
+                    <li id ="layer01" class="basemap-list__item"><input type="radio" id="layer01" class="visible" name="basemap"><img src="./img/basemap/stamen-watercolor.jpg" alt="stamen-terrain" title="stamen-terrain"></li>
+                    <li id ="layer02" class="basemap-list__item"><input type="radio" id="layer02" class="visible" name="basemap"><img src="./img/basemap/stamen-terrain.png" alt="stamen-watercolor" title="stamen-watercolor"></li>
+                    <li id ="layer03" class="basemap-list__item"><input type="radio" id="layer03" class="visible" name="basemap"><img src="./img/basemap/stamen-toner.png" alt="stamen-toner" title="stamen-toner"></li>
+                </ul>
+            </div>
+
+        <!-- Metadata panel -->
+            <!-- Metadata button -->
+            <div class="ol-metadata ol-unselectable ol-control" style="pointer-events: auto;">
+                <button class="ol-metadata-show " type="button" title="Layer Info"><i class="fas fa-info-circle"></i></button>
+            </div>
+            <!-- Metadata panel -->
+            <div class="metadata-panel  ol-unselectable ol-control">
+                <div class="metadata-title"><h5>Layer Title</h5></div>
+                <div class="metadata-contents">
+                  <div class="metadata-contents-abstract"><h6>Abstract:</h6><span></span></div>
+                  <div class="metadata-contents-others">
+                    <div class="metadata-contents-time">
+                      <div class="metadata-contents-time-start"><h6>Time series start date:</h6><span>N/A</span></div>
+                      <div class="metadata-contents-time-end"><h6>Time series end date:</h6><span>N/A</span></div>
+                    </div>
+                    <div class="metadata-contents-legend"><p><h6>Legend:</h6></p><img src=""></div>
+                    <div class="metadata-contents-units"><p><h6>Units of Measure:</h6></p><span style="font-weight: bold;"></span></div>
+                  </div>
+                </div>
+              </div>
+
+        <!-- Static logo -->
+            <div class="interreg-logo ol-unselectable ol-control">
+                <a href="https://progetti.interreg-italiasvizzera.eu/it/b/78/sistemainformativoperilmonitoraggiointegratodeilaghiinsubriciedeiloroe">
+                    <img src="./img/interreg-logo.png" alt="">
+                </a>
+            </div>
+
+        <!-- Image Slider Tutorial -->
+        <!---->
+        <div class="slider ol-unselectable ol-control active">
+            <div class="slider-header">
+                <h6>ReadMe - WebGIS Functions</h6>
+                <button><i class="fas fa-window-close"></i></button>
+            </div>
+            <div class="slides">
+                <!-- radio buttons for the slider -->
+                <input type="radio" name="radio-btn" id="radio1">
+                <input type="radio" name="radio-btn" id="radio2">
+                <input type="radio" name="radio-btn" id="radio3">
+                <input type="radio" name="radio-btn" id="radio4">
+                <!-- slides images -->
+                <div class="slide first active"><p>WebGIS Controls</p><img src=".\img\slide-show\1.png" alt="slide-1"></div>
+                <div class="slide active"><p>WebGIS Layers table of Contents</p><img src=".\img\slide-show\2.png" alt="slide-2"></div>
+                <div class="slide active"><p>WebGIS Layer metadata</p><img src=".\img\slide-show\3.png" alt="slide-3"></div>
+                <div class="slide active"><p>WebGIS Time control</p><img src=".\img\slide-show\4.gif" alt="slide-4"></div>
+                <!-- Automatic navigation -->
+                <div class="navigation-auto active">
+                    <div class="auto-btn1"></div>
+                    <div class="auto-btn2"></div>
+                    <div class="auto-btn3"></div>
+                    <div class="auto-btn4"></div>
+                </div>
+                <!-- Manual navigation -->
+                <div class="navigation-manual active">
+                    <label for="radio1" class="manual-btn active"></label>
+                    <label for="radio2" class="manual-btn active"></label>
+                    <label for="radio3" class="manual-btn active"></label>
+                    <label for="radio4" class="manual-btn active"></label>
+                </div>
+            </div>
+        </div> 
+            
+        <!-- Popup -->
+        <!-- <div id="pop" class="ol-pop">
+            <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+            <div id="popup-title"><h6></h6></div>
+            <div id="popup-content"></div>
+            <div id="popup-getinfo"></div>
+        </div> -->
+
+    </div>
+    <!-- BOTTOM CONTAINER -->
+    <div class="bottom-container">
+        <div class="crs">
+          <form>
+            <label for="projection">Projection </label>
+            <select id="projection">
+              <option value="EPSG:4326">EPSG:4326 (WGS84)</option>
+              <option value="EPSG:3857">EPSG:3857 (Web-Mercator)</option>
+              <option value="EPSG:3857">EPSG:21781 (CH1903/LV03)</option>
+              <option value="EPSG:3857">EPSG:32632 (WGS 84/UTM zone 32N)</option>
+            </select>
+            <label for="precision">Precision</label>
+            <input id="precision" type="number" min="0" max="12" value="4"/>
+          </form>
+        </div>
+        <div class="mouse-position"></div>
+    </div>
+    <!-- Controls -->
+    <script src="./js/controls.js"></script>
+    <script></script>
+    <!-- Additional scripts -->
+    <script src="./js/functions.js"></script>
+    <script src="./js/fetch.js"></script>
+</body>
+</html>

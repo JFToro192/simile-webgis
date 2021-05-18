@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  similewebgis:
+    image: similewebgis
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      - ./.env
+    ports:
+      - 3000:3000

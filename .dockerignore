@@ -1,0 +1,11 @@
+/.env
+/.vscode
+/docker-compose*
+/Dockerfile*
+/node_modules
+README.md
+/public
+/config
+/views
+/sass
+
