@@ -1,0 +1,1 @@
+{"version":3,"sources":["main.css"],"names":[],"mappings":"AAAA,EACE,SAAU,CACV,QACF,CAEA,KACE,WAAY,CACZ,YACF","file":"main.639a858b.css","sourceRoot":"..\\public","sourcesContent":["* {\n  padding: 0;\n  margin: 0;\n}\n\n#map {\n  width: 100vw;\n  height: 100vh;\n}\n"]}

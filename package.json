@@ -1,19 +1,20 @@
 {
-  "name": "docker-ol",
+  "name": "simile-webgis",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel build --public-url . ./public/index.html && app.js",
+    "start": "app.js",
     "dev": "parcel build --public-url . ./public/index.html && nodemon -L app.js",
     "build": "parcel build --public-url . ./public/index.html"
   },
-  "author": "",
+  "author": "jftoro",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "express": "^4.17.1",
-    "ol": "^6.5.0"
+    "ol": "^6.5.0",
+    "parcel-bundler": "^1.12.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.7",
