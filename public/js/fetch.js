@@ -146,12 +146,12 @@ fetch(getCapabilitiesURL)
       layers: [
         groupBasemap,
         //TODO: Retrieve the new time series autmatically
-        layerGroups[0],
-        layerGroups[1][0],
-        layerGroups[1][1],
-        layerGroups[1][2],
-        layerGroups[1][3],
-        layerGroups[1][4],
+        // layerGroups[0],
+        // layerGroups[1][0],
+        // layerGroups[1][1],
+        // layerGroups[1][2],
+        // layerGroups[1][3],
+        // layerGroups[1][4],
       ],
       overlays: [overlay],
       view: view,

@@ -1,7 +1,10 @@
+.env
 .cache
 .vscode
+.dockerignore
 /node_modules
 /views
 /config
 /public
 /sass
+docker-compose.dev.yml
