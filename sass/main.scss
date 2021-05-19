@@ -1,0 +1,534 @@
+@import 'config', 'slider';
+
+//TOP-CONTAINER
+.top-container{
+  float: right;
+  height:$top-container-height;
+  background-color: $primary-background-color;
+  font-weight: bold;
+  overflow: hidden;
+
+  li:hover{
+    background-color: rgba($secondary-background-color,0.5);
+  }
+
+  a{
+    float: right;
+    color: $primary-font-color;
+    text-decoration:none;
+    text-align: center;
+    padding: 14px 16px;
+  }
+
+  a:hover {
+    color: rgba($secondary-font-color,0.5);
+  }
+
+  .nav-item-active {
+    background-color: $secondary-background-color;
+  }
+}
+
+//MIDDLE CONTAINER
+
+.middle-container{
+  height: $mid-container-height;
+  width: 100%;
+}
+
+//map
+
+map{
+  height:100%;
+  width: 100%;
+}
+
+// about the platform
+
+.about-project{
+  position: absolute;
+  height: 40vh;
+  width: 40vw;
+  top:30vh;
+  left:30vw;
+  border-radius: $border-radius;
+  background-color: rgba($tertiary-background-color,0.5);
+  visibility: hidden;
+
+  &.active{
+    visibility: visible;
+  }
+}
+
+.about-webgis{
+  position: absolute;
+  height: 40vh;
+  width: 40vw;
+  top:30vh;
+  left:30vw;
+  border-radius: $border-radius;
+  background-color: rgba($tertiary-background-color,0.5);
+
+  visibility: hidden;
+
+  &.active{
+    visibility: visible;
+  }
+}
+
+.about-close{
+  float: right;
+  margin: 10px 10px 0 10px;
+  border-radius: $border-radius $border-radius 0 0;
+
+  i{
+    color: $primary-font-color;
+  }
+
+  i:hover{
+    color: rgba(red,0.8);
+  }
+}
+
+.about-info{
+  margin: 0 10px 10px 10px;
+  height: calc(100% - 40px);
+  width: calc(100% - 20px);
+  color: $primary-font-color;
+  border-radius: $border-radius 0 $border-radius $border-radius;
+  background-color: rgba($secondary-background-color,0.5);
+  align-content: center;
+  text-align: center;
+  overflow-y: auto;
+
+  p{
+    padding: 5px;
+  }
+}
+
+// search layers controllers
+
+.ol-layers.ol-unselectable.ol-control {
+  top: calc( 50px + 0.5em);
+  left: 2.5rem;
+}
+
+.table-content-container.ol-unselectable.ol-control{
+  top: calc( 50px + 0.5em);
+  left: 4.5rem;
+  height: 30vh;
+  width: 30vw;
+  resize: both;
+  padding: 0;
+  margin: 0;
+  $border-radius:$border-radius;
+  overflow-y: scroll;
+  visibility: hidden;
+
+  input{
+    display: none;
+  }
+
+
+  h5{
+    padding-left: 10px;
+    color: $primary-font-color;
+    background-color: rgba($secondary-background-color,0.5);
+    border-radius: $border-radius;;
+  }
+
+  ul{
+    width: 100%;
+    padding:4px;
+  }
+
+  &.active{
+    visibility: visible;
+
+    input{
+      display:inline;
+    }
+    
+  }
+}
+
+  //customise the TOC elements
+.divLi{
+  display: flex;
+
+  i{
+    text-decoration: none;
+    color:rgba($tertiary-font-color,0.5);
+
+    &:hover{
+      color:$tertiary-font-color;
+      cursor: pointer;
+    }
+  }
+
+  &__chck{
+    width: 5%;
+  }
+
+  &__layerName{
+    width: 50%;
+    text-overflow: ellipsis; 
+  }
+
+  &__layerInfo{
+    width: 5%;
+  }
+
+  &__layerDownload{
+    width: 5%;
+  }
+
+  &__layerOpacity{
+    width: 45%;
+    
+    input{
+      width:85%;
+      -webkit-appearance: none;
+      height: 15px;
+      border-radius: $border-radius;  
+      background: #d3d3d3;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+  
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%; 
+        background: rgba($secondary-background-color,0.5);
+        cursor: pointer;
+  
+        &:hover{
+          background: rgba($secondary-background-color,1);
+        }
+      }
+    }
+
+    &:hover{
+      i{
+        color:$tertiary-font-color;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+// time controllers
+
+.ol-time.ol-unselectable.ol-control {
+  top: calc( 50px + 2.5em);
+  right: 0.5rem;
+}
+
+.time-manager.ol-unselectable.ol-control {
+  top: calc( 50px + 4.5em);
+  right: 0.5rem;
+  display: inline-block;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: $border-radius;
+  visibility: hidden;
+
+  ul{
+    width: 100%;
+    padding:0;
+  }
+
+  &.active{
+    visibility: visible;
+  }
+}
+
+.time-current{
+  margin: 2px;
+  border-radius: $border-radius $border-radius 0 0 ;
+  background: rgba($secondary-background-color,0.5);
+}
+
+.time-slider{
+  width: 100%;
+  margin: 2px;
+
+  &__range{
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: $border-radius;  
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%; 
+      background: rgba($secondary-background-color,0.5);
+      cursor: pointer;
+
+      &:hover{
+        background: rgba($secondary-background-color,1);
+      }
+    }
+  }
+}
+.time-controls{
+  margin:0;
+
+  li{
+    display:inline;
+    border-radius: 30%;
+  };
+
+  i{
+    background: rgba($secondary-background-color,0.5);
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+  }
+
+  a{
+    color: $primary-font-color;
+
+    &:hover{
+      color: $tertiary-font-color;
+    }
+  }
+}
+
+// plot-display
+.ol-plot.ol-unselectable.ol-control {
+  bottom: calc( 50px + 4em );
+  right: 0.5rem;
+}
+
+.plot-container.ol-unselectable.ol-control {
+  bottom: calc( 50px + 4em );
+  right: 2.5rem;
+  height: 200px;
+  width: 600px;
+  visibility: hidden;
+
+  &.active{
+    visibility: visible;
+  }
+}
+
+// basemap-controllers
+.ol-basemap.ol-unselectable.ol-control {
+  bottom: calc( 50px + 2em );
+  right: 2.5rem;
+}
+
+.basemap-container.ol-unselectable.ol-control{
+  bottom: calc( 50px + 2em );
+  right: 4.5em;
+  display: inline-block;
+  visibility: hidden;
+
+  ul{
+    margin:0;
+    padding:0
+  }
+
+  li{
+    display: inline;
+
+    input{
+      position: absolute;
+      margin:5px;
+      display:none;
+    }
+  }
+
+  img{
+    height: 100px;
+    opacity: 0.6;
+
+    &:hover{
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+
+  &.active{
+    visibility: visible;
+  }
+
+  &.active input{
+    display: inline;
+  }
+}
+
+// metadata controllers
+.ol-metadata.ol-unselectable.ol-control {
+  bottom: calc( 50px + 2em);
+  right: 0.5rem;
+}
+
+.metadata-panel.ol-unselectable.ol-control {
+  bottom: calc( 50px + 4em);
+  right: 0.5rem;
+  height: 55vh;
+  width: 30vw;
+  border-radius: $border-radius;
+  visibility: hidden;
+
+  ul{
+    background-color: rgba($secondary-background-color,0.5);
+  }
+
+  li{
+    display:inline;
+    padding: 10px;
+  };
+
+  &.active{
+    visibility: visible;
+  }
+}
+
+.metadata-title{
+  padding: 0;
+  margin: 0;
+  height: 2em;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: $border-radius $border-radius 0 0;
+  background-color: rgba($secondary-background-color,0.5);
+}
+
+.metadata-contents-abstract{
+  height: 15vh;
+  overflow-y: scroll;
+}
+
+.metadata-contents{
+  padding: 2px 0 2px 0;
+  height: 70vh;
+  text-align: justify;
+  text-align: center;
+
+  h6{
+    background-color: rgba($secondary-background-color,0.5);
+  }
+}
+
+.metadata-contents-others{
+  display: flex;
+  align-items: baseline;
+  text-align: center;
+
+  .metadata-contents-time{
+    padding-right: 1px;
+    height: calc( 50vh - 2em - 6px);
+    width:calc(40% - 2px);
+
+  }
+
+  .metadata-contents-legend{
+    padding-left: 1px;
+    height: calc( 50vh - 7em - 6px);
+    width:calc(30% - 2px);
+    overflow-y: scroll;
+    img{
+      display:block;
+      margin: 0 auto;
+    }
+  }
+}
+
+// OverviewMap resposition
+.ol-overviewmap{
+  bottom: 2em !important;
+}
+
+// ScaleLine style
+.ol-scale-line{
+  background-color: rgba($secondary-background-color,0.5) !important;
+}
+
+//static-logo position
+.interreg-logo.ol-unselectable.ol-control {
+  bottom: calc( 50px + 0.5em);
+  left: 10rem;
+
+  img{
+    height:50px;
+  }
+}
+
+.ol-pop {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  bottom: 12px;
+  left: -50px;
+  min-width: 280px;
+}
+.ol-pop:after, .ol-popup:before {
+  top: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.ol-pop:after {
+  border-top-color: white;
+  border-width: 10px;
+  left: 48px;
+  margin-left: -10px;
+}
+.ol-pop:before {
+  border-top-color: #cccccc;
+  border-width: 11px;
+  left: 48px;
+  margin-left: -11px;
+}
+.ol-pop-closer {
+  text-decoration: none;
+  position: absolute;
+  top: 2px;
+  right: 8px;
+}
+.ol-pop-closer:after {
+  content: "✖";
+}
+
+//BOTTOM-CONAINER
+
+.bottom-container{
+  height: $bot-container-height;
+  color: $primary-font-color;
+  align-items: center;
+  align-content: center;
+  vertical-align: middle;
+  background-color: $primary-background-color;
+  display: flex;
+}
+
+.crs{
+  width: 35vw;;
+}
+
+.mouse-position{
+  width: 35vw;
+}

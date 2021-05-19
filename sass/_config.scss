@@ -1,0 +1,58 @@
+//Container sizes
+$top-container-height: 50px;
+$bot-container-height: 50px;
+$mid-container-height: calc(100vh - 100px);
+$border-radius: 8px;
+
+//Background colors
+$primary-background-color: #505050;
+$secondary-background-color: #007787;
+$tertiary-background-color: #FFFFFF;
+
+//Fonts
+$primary-font-color: #FFFFFF;
+$secondary-font-color: #000000;
+$tertiary-font-color: #007787;
+
+*{
+  padding:0;
+  margin:0;
+  overflow: hidden;
+}
+
+body{
+  background-color: $primary-background-color !important;
+}
+
+h5, h6{
+  font-weight: bold;
+  color: $primary-font-color;
+}
+
+button{
+  background: rgba($secondary-background-color,0.5)!important;
+
+  &:hover{
+    background: rgba($secondary-background-color,1)!important;
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba($primary-background-color,0.1); 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba($secondary-background-color,0.5); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
